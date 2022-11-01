@@ -1,0 +1,5 @@
+<ng-container *ngIf="(episodes | async)?.length">
+  <ng-container *ngFor="let episode of episodes | async">
+    <app-episode-card [episode]="episode"></app-episode-card>
+  </ng-container>
+</ng-container>

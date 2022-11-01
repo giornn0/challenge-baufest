@@ -1,0 +1,38 @@
+<ng-container *ngIf="realFilters.length">
+  <form
+    [formGroup]="paramsFilter"
+    (ngSubmit)="makeRequest.emit(paramsFilter.value)"
+  >
+    <mat-card class="w-100 my-4 bg-gray-500">
+      <ng-container *ngFor="let filter of realFilters">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ filter.label }}</mat-label>
+          <ng-container *ngIf="filter.options; else normal">
+            <mat-select [formControlName]="filter.filter">
+              <mat-option [value]="null"> Todos </mat-option>
+              <mat-option
+                *ngFor="let option of filter.options"
+                [value]="option.value"
+              >
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+          </ng-container>
+          <ng-template #normal>
+            <input matInput [formControlName]="filter.filter" />
+          </ng-template>
+        </mat-form-field>
+      </ng-container>
+      <mat-card-actions style="padding-left: 0.5rem">
+        <button
+          class="hover:bg-green-700 hover:text-white"
+          type="submit"
+          mat-raised-button
+          color="accent"
+        >
+          Buscar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</ng-container>

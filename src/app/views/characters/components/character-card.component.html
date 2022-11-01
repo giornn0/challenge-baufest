@@ -1,0 +1,56 @@
+<mat-card
+  class="h-full"
+  [ngClass]="{ 'my-2': directionOpt.Horizontal === direction }"
+  *ngIf="character"
+>
+  <ng-container [ngSwitch]="direction">
+    <ng-container *ngSwitchCase="directionOpt.Horizontal">
+      <div class="grid grid-cols-5 content-center">
+        <div>
+          <img class="rounded-md" [src]="character.image" />
+        </div>
+        <div class="col-span-3">
+          <mat-card-header>
+            <mat-card-title>{{ character.name }}</mat-card-title>
+            <mat-card-subtitle class="text-green-200"
+              >{{ character.gender }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="px-4 gap-2" *ngIf="!simple">
+            <span class="text-yellow-200"
+              >Locación: {{ character.location.name }}</span
+            ><br />
+            <span class="text-yellow-200"
+              >{{ character.episode[random(character.episode.length)] }}
+            </span>
+          </mat-card-content>
+        </div>
+        <div class="flex content-end">
+          <span
+            (click)="isListedToCompare() ? removeCompare() : addToCompare()"
+            class="pt-4 text-blue-200 cursor-pointer hover:text-blue-500"
+            [ngClass]="{
+              'text-red-200 hover:text-red-500': isListedToCompare()
+            }"
+            >{{ isListedToCompare() ? "Remover" : "Comparar" }}</span
+          >
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="directionOpt.Vertical">
+      <div class="flex flex-col">
+        <div class="rounded-md w-full h-full">
+          <img [src]="character.image" />
+        </div>
+        <span class="text-lg">{{ character.name }}</span>
+        <span class="text-md text-green-200">{{ character.gender }}</span>
+        <span class="text-md text-yellow-200">{{
+          character.location.name
+        }}</span>
+        <span class="text-md text-yellow-200">{{ character.species }}</span>
+        <span class="text-md text-yellow-200">{{ character.status }}</span>
+        <span *ngFor="let extra of character.extras">{{ extra }}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+</mat-card>

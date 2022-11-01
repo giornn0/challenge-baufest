@@ -1,0 +1,20 @@
+<mat-card class="my-2" *ngIf="episode">
+  <mat-card-header class="flex justify-between align-middle">
+    <mat-card-title
+      >{{ episode.name }}-
+      <span class="text-yellow-200">{{ episode.episode }}</span>
+
+      <mat-card-subtitle>
+        <span class="text-green-200 mt-2 mr-2"
+          >Emisión: {{ episode.air_date | date: "dd/MM/YYYY" }}</span
+        >
+      </mat-card-subtitle>
+    </mat-card-title>
+    <span
+      *ngIf="details"
+      (click)="showDetails()"
+      class="pt-4 text-blue-200 cursor-pointer"
+      >Detalles</span
+    >
+  </mat-card-header>
+</mat-card>

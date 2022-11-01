@@ -1,0 +1,18 @@
+<mat-card *ngIf="location" class="my-2">
+  <mat-card-header>
+    <mat-card-title
+      >{{ location.name }} - (<span class="text-green-200"
+        >hab. {{ location.residents.length }}</span
+      >)
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span class="text-yellow-200 mr-2">Tipo: {{ location.type }}</span>
+      <span class="text-yellow-200 mr-2"
+        >Dimensión: {{ location.dimension }}</span
+      >
+      <span class="text-yellow-200 mr-2"
+        >Creación: {{ location.created | date: "dd/MM/YYYY" }}</span
+      >
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

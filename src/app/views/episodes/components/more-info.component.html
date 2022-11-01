@@ -1,0 +1,11 @@
+<mat-card class="overflow-y-auto h-fit">
+  <app-episode-card [episode]="data.episode" [details]="false">
+  </app-episode-card>
+  <ng-container *ngIf="(characters | async)?.length; else loading">
+    <app-characters-list
+      [characters]="characters"
+      [simple]="true"
+    ></app-characters-list>
+  </ng-container>
+  <ng-template #loading>Cargando..</ng-template>
+</mat-card>

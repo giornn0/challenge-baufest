@@ -1,0 +1,27 @@
+<div class="p-4 pb-0 w-full flex justify-between">
+  <app-selector [options]="togglerOptions" (changed)="change($event)">
+  </app-selector>
+  <button
+    class="p-4 bg-gray-300 hover:bg-gray-700 hover:text-white rounded-md sticky"
+    (click)="showCompare()"
+  >
+    Ver comparación
+  </button>
+</div>
+<div class="p-4 pt-1">
+  <app-filter
+    [filters]="filters"
+    (makeRequest)="makeRequest($event)"
+  ></app-filter>
+  <ng-container [ngSwitch]="current | async">
+    <ng-container *ngSwitchCase="apiRoutes.Character">
+      <app-characters-list [characters]="characters"></app-characters-list>
+    </ng-container>
+    <ng-container *ngSwitchCase="apiRoutes.Location">
+      <app-locations-list [locations]="locations"></app-locations-list>
+    </ng-container>
+    <ng-container *ngSwitchCase="apiRoutes.Episode">
+      <app-episodes-list [episodes]="episodes"></app-episodes-list>
+    </ng-container>
+  </ng-container>
+</div>

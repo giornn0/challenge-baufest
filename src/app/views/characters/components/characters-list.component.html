@@ -1,0 +1,8 @@
+<ng-container *ngIf="(characters | async)?.length">
+  <ng-container *ngFor="let character of characters | async">
+    <app-character-card
+      [simple]="simple"
+      [character]="character"
+    ></app-character-card>
+  </ng-container>
+</ng-container>

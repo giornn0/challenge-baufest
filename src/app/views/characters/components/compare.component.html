@@ -1,0 +1,14 @@
+<ng-container *ngIf="(comparing | async)?.length; else emptyCompare">
+  <div class="bg-gray-400 flex flex-row justify-center gap-4 p-4">
+    <div *ngFor="let character of comparing | async">
+      <app-character-card
+        [character]="character"
+        [direction]="directionOpt.Vertical"
+      ></app-character-card>
+    </div>
+  </div>
+  <span></span>
+</ng-container>
+<ng-template #emptyCompare>
+  Ninǵun personaje listado para comparación
+</ng-template>

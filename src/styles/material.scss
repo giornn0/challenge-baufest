@@ -1,0 +1,8 @@
+.cdk-dialog-container {
+  display: block;
+  width: 100%;
+  height: fit-content !important;
+  min-height: inherit;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
